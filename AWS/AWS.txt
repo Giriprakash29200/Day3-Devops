@@ -1,0 +1,25 @@
+Amazon Web Services (AWS)  is a comprehensive, on-demand cloud computing platform by Amazon, offering over 200 services like computing power, storage, databases, and AI, allowing businesses to scale resources online without buying physical servers, paying only for what they use (pay-as-you-go). 
+
+AWS core services are foundational cloud building blocks for,
+
+1. Compute:
+Amazon EC2 (Elastic Compute Cloud): Virtual servers in the cloud.
+AWS Lambda: Run code without provisioning servers (serverless).
+
+2. Storage:
+Amazon S3 (Simple Storage Service): Scalable object storage for data.
+Amazon EBS (Elastic Block Store): Block storage for EC2 instances.
+
+3. Databases:
+Amazon RDS (Relational Database Service): Managed relational databases (MySQL, PostgreSQL, etc.).
+Amazon DynamoDB: Managed NoSQL database.
+
+4. Networking & Content Delivery:
+Amazon VPC (Virtual Private Cloud): Isolated network environment.
+Amazon Route 53: Scalable Domain Name System (DNS) web service.
+Amazon CloudFront: Content Delivery Network (CDN).
+
+5. Security & Identity:
+AWS IAM (Identity and Access Management): Manage user access and permissions.
+Management & Monitoring:
+AWS CloudWatch: Monitor resources and applications.
