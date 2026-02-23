@@ -1,0 +1,52 @@
+services:
+
+  db:
+    image: postgres:15
+    container_name: library_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "1234"
+      POSTGRES_DB: book_list
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d book_list"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    container_name: library_app
+    restart: always
+    ports:
+      - "8000:8000"
+    command: uvicorn Devopsintern.libraryproject_api:app --host 0.0.0.0 --port 8000
+    environment:
+      DATABASE_URL: postgresql://postgres:1234@db:5432/book_list
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - .:/app
+
+  issues_app:
+    build: .
+    container_name: issues_app
+    restart: always
+    ports:
+      - "8001:8001"
+    command: uvicorn Devopsintern.issueproject_api:app --host 0.0.0.0 --port 8001
+    environment:
+      DATABASE_URL: postgresql://postgres:1234@db:5432/book_list
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - .:/app
+
+volumes:
+  postgres_data:
